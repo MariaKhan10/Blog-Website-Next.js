@@ -8,10 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      backgroundImage: {
+        'blog-background': "url('/pictures/bgimage.png')", // Replace with your image path
       },
+      
     },
   },
   plugins: [],
