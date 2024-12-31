@@ -1,12 +1,19 @@
 import Link from 'next/link'
 import React from 'react'
+import { Great_Vibes } from '@next/font/google';
+
+const greatVibes = Great_Vibes({
+  weight: ['400'], // Specify weights if necessary
+  subsets: ['latin'], // Specify subsets
+  display: 'swap', // Use font-display: swap for better performance
+});
 
 const Tutorials = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font">
+      <section className="text-[#6b74ee] body-font">
     <div className="container px-5 py-24 mx-auto">
-    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-center text-white">Trending Tutorials</h1>
+    <h1 className={`${greatVibes.className} "sm:text-3xl text-4xl font-medium title-font mb-4 text-center text-white"`}>Trending Tutorials</h1>
     <div className="h-1 w-20 bg-indigo-500 rounded m-auto"></div>
       <div className="flex flex-wrap -m-4 mt-10">
 

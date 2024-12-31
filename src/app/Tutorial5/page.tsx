@@ -1,8 +1,27 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from "react";
 
 const Page = () => {
+  const [comments, setComments] = useState<
+    { name: string; text: string; date: string }[]
+  >([]);
+  const [newComment, setNewComment] = useState<string>("");
+  const [name, setName] = useState<string>("");
+
+  const handleAddComment = () => {
+    if (newComment.trim() && name.trim()) {
+      const date = new Date().toLocaleString(); // Current date and time
+      setComments([
+        ...comments,
+        { name: name.trim(), text: newComment.trim(), date },
+      ]);
+      setNewComment("");
+      setName("");
+    }
+  };
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-yellow-50 rounded-lg shadow-md">
+    <div className="max-w-3xl mx-auto p-8 bg-blue-50 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">JavaScript Fundamentals</h1>
       <p className="text-lg text-gray-700 mb-4">
         JavaScript is the beating heart of modern web development, enabling dynamic and interactive web applications. It’s the language that powers everything from form validations to real-time updates, making it an essential skill for developers. Whether you’re just starting or looking to refine your knowledge, understanding JavaScript fundamentals will set you up for success.
@@ -38,7 +57,7 @@ const Page = () => {
       <p className="text-lg text-gray-700 mb-4">
         To start your JavaScript journey, you can include it directly in your HTML file or use an external script. Here’s a simple example:
       </p>
-      <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mb-4">
+      <pre className="bg-gray-800 p-4 rounded-lg text-sm overflow-x-auto mb-4">
         {`<!DOCTYPE html>
 <html>
   <head>
@@ -63,6 +82,45 @@ const Page = () => {
       <p className="text-lg text-gray-700">
         Start your journey with JavaScript today and unleash the potential to create amazing web applications that users will love!
       </p>
+      
+        {/* Comments Section */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Comments</h2>
+          <div className="mb-6">
+            {comments.map((comment, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 p-4 rounded-lg shadow-md mb-2"
+              >
+                <p className="font-semibold text-gray-800">{comment.name}</p>
+                <p className="text-gray-500 text-sm">{comment.date}</p>
+                <p className="text-gray-700">{comment.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="p-2 rounded-lg bg-gray-200 text-gray-800 placeholder-gray-500"
+            />
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              className="p-2 rounded-lg bg-gray-200 text-gray-800 placeholder-gray-500"
+            />
+            <button
+              onClick={handleAddComment}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-400"
+            >
+              Post
+            </button>
+          </div>
+        </div>
     </div>
   );
 };

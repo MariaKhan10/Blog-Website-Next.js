@@ -1,6 +1,25 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from "react";
 
 const Page = () => {
+  const [comments, setComments] = useState<
+    { name: string; text: string; date: string }[]
+  >([]);
+  const [newComment, setNewComment] = useState<string>("");
+  const [name, setName] = useState<string>("");
+
+  const handleAddComment = () => {
+    if (newComment.trim() && name.trim()) {
+      const date = new Date().toLocaleString(); // Current date and time
+      setComments([
+        ...comments,
+        { name: name.trim(), text: newComment.trim(), date },
+      ]);
+      setNewComment("");
+      setName("");
+    }
+  };
   return (
     <div className="max-w-3xl mx-auto p-8 bg-yellow-50 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Python Essentials</h1>
@@ -47,7 +66,7 @@ const Page = () => {
         (<a href="https://www.python.org/" className="text-blue-500 underline">python.org</a>) and download the latest version for your operating system. After installation, you can write and execute Python code using the built-in 
         interpreter or an IDE like PyCharm, VS Code, or Jupyter Notebook.
       </p>
-      <pre className="bg-gray-100 p-4 rounded-lg text-sm overflow-x-auto mb-4">
+      <pre className="bg-gray-800 p-4 rounded-lg text-sm overflow-x-auto mb-4">
         {`# Your first Python program
 print("Hello, Python!")`}
       </pre>
@@ -64,6 +83,45 @@ print("Hello, Python!")`}
       <p className="text-lg text-gray-700">
         So, embark on your Python journey today! Unlock the potential of this incredible language and transform your ideas into reality.
       </p>
+      
+        {/* Comments Section */}
+        <div className="mt-10">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Comments</h2>
+          <div className="mb-6">
+            {comments.map((comment, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 p-4 rounded-lg shadow-md mb-2"
+              >
+                <p className="font-semibold text-gray-800">{comment.name}</p>
+                <p className="text-gray-500 text-sm">{comment.date}</p>
+                <p className="text-gray-700">{comment.text}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="p-2 rounded-lg bg-gray-200 text-gray-800 placeholder-gray-500"
+            />
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              className="p-2 rounded-lg bg-gray-200 text-gray-800 placeholder-gray-500"
+            />
+            <button
+              onClick={handleAddComment}
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-400"
+            >
+              Post
+            </button>
+          </div>
+        </div>
     </div>
   );
 };

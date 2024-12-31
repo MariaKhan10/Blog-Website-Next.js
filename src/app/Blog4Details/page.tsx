@@ -1,6 +1,51 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 
-const page = () => {
+interface Comment {
+  name: string;
+  text: string;
+  date: string;
+}
+
+const Page = () => {
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [newComment, setNewComment] = useState('');
+  const [newName, setNewName] = useState('');
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [editingText, setEditingText] = useState('');
+
+  const handleAddComment = () => {
+    if (newComment.trim() && newName.trim()) {
+      setComments([
+        ...comments,
+        {
+          name: newName,
+          text: newComment,
+          date: new Date().toLocaleDateString(),
+        },
+      ]);
+      setNewComment('');
+      setNewName('');
+    }
+  };
+
+  const handleDeleteComment = (index: number) => {
+    setComments(comments.filter((_, i) => i !== index));
+  };
+
+  const handleEditComment = (index: number) => {
+    setEditingIndex(index);
+    setEditingText(comments[index].text);
+  };
+
+  const handleSaveEdit = (index: number) => {
+    const updatedComments = [...comments];
+    updatedComments[index].text = editingText;
+    setComments(updatedComments);
+    setEditingIndex(null);
+    setEditingText('');
+  };
+
   return (
     <div
       className="relative bg-cover bg-center min-h-screen flex flex-col items-center justify-between"
@@ -113,9 +158,82 @@ const page = () => {
         <p className="text-lg">
           Start exploring these CSS trends today and take your web design skills to the next level. The future of CSS is here—make the most of it!
         </p>
+
+
+          {/* Comment Section */}
+          <div className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">Comments</h2>
+          <div className="mb-4">
+            <input
+              type="text"
+              placeholder="Your name"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              className="p-2 rounded w-full mb-2 text-black"
+            />
+            <textarea
+              placeholder="Write a comment..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              className="p-2 rounded w-full text-black"
+            ></textarea>
+            <button
+              onClick={handleAddComment}
+              className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Add Comment
+            </button>
+          </div>
+          <div>
+            {comments.map((comment, index) => (
+              <div
+                key={index}
+                className="bg-gray-700 p-4 rounded mb-4 text-white"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <strong>{comment.name}</strong> -{' '}
+                    <span className="text-gray-400">{comment.date}</span>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => handleEditComment(index)}
+                      className="text-blue-400 hover:underline mr-2"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteComment(index)}
+                      className="text-red-400 hover:underline"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                {editingIndex === index ? (
+                  <div className="mt-2">
+                    <textarea
+                      value={editingText}
+                      onChange={(e) => setEditingText(e.target.value)}
+                      className="p-2 rounded w-full text-black"
+                    ></textarea>
+                    <button
+                      onClick={() => handleSaveEdit(index)}
+                      className="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                    >
+                      Save
+                    </button>
+                  </div>
+                ) : (
+                  <p className="mt-2">{comment.text}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
