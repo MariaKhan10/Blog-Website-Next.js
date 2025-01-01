@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { Great_Vibes } from '@next/font/google';
+import Image from 'next/image';
 
 const greatVibes = Great_Vibes({
   weight: ['400'], // Specify weights if necessary
@@ -20,10 +21,11 @@ const Tutorials = () => {
         
         <div className="p-4 md:w-1/3">
           <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img
+            <Image
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/reactimg.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
 
 
@@ -96,7 +98,8 @@ const Tutorials = () => {
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/nextjs.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
             <div className="p-6">
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -166,7 +169,8 @@ const Tutorials = () => {
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/python.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
             <div className="p-6">
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -241,7 +245,8 @@ const Tutorials = () => {
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/css.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
             <div className="p-6">
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -314,7 +319,8 @@ const Tutorials = () => {
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/js.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
             <div className="p-6">
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -387,7 +393,8 @@ const Tutorials = () => {
             <img
               className="lg:h-48 md:h-36 w-full object-cover object-center"
               src="/pictures/fw.png"
-              alt="blog"
+              alt="blog"   width={400}
+      height={400}
             />
             <div className="p-6">
               <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">

@@ -1,8 +1,7 @@
 "use client";
-
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [comments, setComments] = useState<
     { name: string; text: string; date: string }[]
   >([]);
@@ -169,4 +168,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

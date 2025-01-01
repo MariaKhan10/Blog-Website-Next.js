@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { Great_Vibes } from '@next/font/google';
+import Image from 'next/image';
 
 const greatVibes = Great_Vibes({
   weight: ['400'], // Specify weights if necessary
@@ -23,10 +24,12 @@ const PopularVideos = () => {
 
       <div className="p-4 md:w-1/3">
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-indigo-500">
-    <img
+    <Image
       className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 hover:scale-110"
       src="/pictures/reactimg.png"
-      alt="blog"
+      alt="blog"   width={400}
+      height={400}
+    
     />
     <div className="p-6">
       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1 transition-colors duration-300 hover:text-indigo-400">
@@ -97,10 +100,11 @@ const PopularVideos = () => {
 
 <div className="p-4 md:w-1/3">
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-indigo-500">
-    <img
+    <Image
       className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 hover:scale-110"
       src="/pictures/nextjs.png"
-      alt="blog"
+      alt="blog"   width={400}
+      height={400}
     />
     <div className="p-6">
       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1 transition-colors duration-300 hover:text-indigo-400">
@@ -172,10 +176,11 @@ const PopularVideos = () => {
 
 <div className="p-4 md:w-1/3">
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:border-indigo-500">
-    <img
+    <Image
       className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 hover:scale-110"
       src="/pictures/python.png"
-      alt="blog"
+      alt="blog"   width={400}
+      height={400}
     />
     <div className="p-6">
       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1 transition-colors duration-300 hover:text-indigo-400">
@@ -253,10 +258,11 @@ const PopularVideos = () => {
 
 <div className="p-4 md:w-1/3">
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-105 hover:shadow-lg">
-    <img
+    <Image
       className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-500 hover:scale-110"
       src="/pictures/css.png"
-      alt="blog"
+      alt="blog"   width={400}
+      height={400}
     />
     <div className="p-6">
       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
@@ -330,10 +336,11 @@ const PopularVideos = () => {
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
     <div className="relative">
       {/* Background Image */}
-      <img
+      <Image
         className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-300 hover:scale-110"
         src="/pictures/js.png"
-        alt="blog"
+        alt="blog"   width={400}
+      height={400}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 hover:bg-opacity-30"></div>
@@ -409,10 +416,11 @@ const PopularVideos = () => {
   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-lg">
     <div className="relative">
       {/* Background Image */}
-      <img
+      <Image
         className="lg:h-48 md:h-36 w-full object-cover object-center transition-transform duration-300 hover:scale-110"
         src="/pictures/fw.png"
-        alt="blog"
+        alt="blog"   width={400}
+      height={400}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-300 hover:bg-opacity-30"></div>

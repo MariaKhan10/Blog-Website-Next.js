@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { Great_Vibes } from '@next/font/google';
+import Image from 'next/image';
 
 const greatVibes = Great_Vibes({
   weight: ['400'], // Specify weights if necessary
@@ -35,10 +36,12 @@ const Hero = () => {
             </div>
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-            <img
+            <Image
               className="object-cover object-center rounded-2xl shadow-lg"
               alt="hero"
               src="/pictures/heroimg.png"
+              width={500}
+              height={600}
             />
           </div>
         </div>
